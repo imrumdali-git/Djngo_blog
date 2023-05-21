@@ -5,12 +5,18 @@
 
 <h1> {{ post.title }} </h1>
 
-<small>By: {{ post.author.first_name }} 
-    {{ post.author.last_name }} </small><br/>
+<small>By: 
+    {{ post.author.first_name }} 
+    {{ post.author.last_name }} - 
+    {{ post.post_date }} - 
+    <a href="{% url 'update_post' post.pk %}"> (Edit) </a> 
+    <a href="{% url 'delete_post' post.pk %}"> (Delete) </a>
+</small> <br/>
 <hr>
 <br/>
 {{ post.body }}
 
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>   <!-- Here is the Button Function -->
+
 {% endblock %}
