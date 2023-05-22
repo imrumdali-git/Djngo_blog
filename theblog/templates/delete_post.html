@@ -2,16 +2,22 @@
 {% block title %} Delete Blog Post {% endblock %}
 {% block content %}
 
-<h1> Delete Post... </h1>
-<br/><br/>
-<h3>Delete: {{ post.title }}</h3> 
+{% if user.is_authenticated %}
+    <h1> Delete Post... </h1>
+    <br/><br/>
+    <h3>Delete: {{ post.title }}</h3> 
 
-<br/>
-<div class="form-group">
-    <form method = "POST">
-        {% csrf_token %}   <!--It Helps to protect you from hijacking-->
-        <strong> Are you sure ?</strong><br/><br/>
-        <button class="btn btn-secondary"> Delete Blog! </button>
-</div>        
+    <br/>
+    <div class="form-group">
+        <form method = "POST">
+            {% csrf_token %}   <!--It Helps to protect you from hijacking-->
+            <strong> Are you sure ?</strong><br/><br/>
+            <button class="btn btn-secondary"> Delete Blog! </button>
+    </div> 
+{% else %}
+
+    You're not allowed here.(You know it...!)
+
+ {% endif %}         
 
 {% endblock %} 
