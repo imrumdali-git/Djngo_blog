@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView,CreateView,UpdateView,DeleteView
-from .models import Post
+from .models import Post, Catogery
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 # Create your views here.Comment
@@ -22,6 +22,13 @@ class AddPostView(CreateView):
     form_class = PostForm
     template_name = 'add_post.html'
     # fields = '__all__'    #It gives all the model database fillup
+    # fields = ('title','body')
+
+class AddCategoryView(CreateView):
+    model = Catogery
+    # form_class = PostForm
+    template_name = 'add_catogery.html'
+    fields = '__all__'    #It gives all the model database fillup
     # fields = ('title','body')
 
 class UpdatePostView(UpdateView):
