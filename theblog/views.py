@@ -17,6 +17,10 @@ class ArticleDetailView(DetailView):
     model = Post
     template_name = 'article_detail.html'
 
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(catogery=cats.replace('-', ' '))   #mistake spell from model
+    return render(request, 'categories.html', {'cats':cats.title().replace('-', ' '), 'category_posts':category_posts})
+
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
